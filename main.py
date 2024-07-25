@@ -1,46 +1,34 @@
-print('''
-  *******************************************************************************
-            |                   |                  |                     |
-   _________|________________.=""_;=.______________|_____________________|_______
-  |                   |  ,-"_,=""     `"=.|                  |
-  |___________________|__"=._o`"-._        `"=.______________|___________________
-            |                `"=._o`"=._      _`"=._                     |
-   _________|_____________________:=._o "=._."_.-="'"=.__________________|_______
-  |                   |    __.--" , ; `"=._o." ,-"""-._ ".   |
-  |___________________|_._"  ,. .` ` `` ,  `"-._"-._   ". '__|___________________
-            |           |o`"=._` , "` `; .". ,  "-._"-._; ;              |
-   _________|___________| ;`-.o`"=._; ." ` '`."\` . "-._ /_______________|_______
-  |                   | |o;    `"-.o`"=._``  '` " ,__.--o;   |
-  |___________________|_| ;     (#) `-.o `"=.`_.--"_o.-; ;___|___________________
-  ____/______/______/___|o;._    "      `".o|o_.--"    ;o;____/______/______/____
-  /______/______/______/_"=._o--._        ; | ;        ; ;/______/______/______/_
-  ____/______/______/______/__"=._o--._   ;o|o;     _._;o;____/______/______/____
-  /______/______/______/______/____"=._o._; | ;_.--"o.--"_/______/______/______/_
-  ____/______/______/______/______/_____"=.o|o_.--""___/______/______/______/____
-  /______/______/______/______/______/______/______/______/______/______/_____ /
-  *******************************************************************************
-  ''')
-print("Welcome to Treasure Island.")
-print("Your mission is to find the treasure.") 
+#Password Generator Project
+import random
+letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
+numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+symbols = ['!', '#', '$', '%', '&', '(', ')', '*', '+']
 
-  #https://www.draw.io/?lightbox=1&highlight=0000ff&edit=_blank&layers=1&nav=1&title=Treasure%20Island%20Conditional.drawio#Uhttps%3A%2F%2Fdrive.google.com%2Fuc%3Fid%3D1oDe4ehjWZipYRsVfeAx2HyB7LCQ8_Fvi%26export%3Ddownload
+print("Welcome to the PyPassword Generator!")
+nr_letters= int(input("How many letters would you like in your password?\n")) 
+nr_symbols = int(input(f"How many symbols would you like?\n"))
+nr_numbers = int(input(f"How many numbers would you like?\n"))
 
-  #Write your code below this line 👇
-direction = input("You are at a crossroad. Where do you want to go? Type 'left' or 'right'\n").lower()
-if direction == "left":
-          
-          lake = input("You have come to a lake. There is an island in the middle of the lake.. Type 'wait' to wait for a boat. Type 'swim' to swim\n").lower()
-          if lake =="wait":
-                    
-                    door = input("You arrive at the island unharmed. There is a house with 3 doors .One red, one yellow and one blue. Which colour do you choose?\n").lower() 
-                    if door == "red":
-                              print("It's a room full of fire. Game Over.\n")
-                    elif door == "yellow":
-                              print("You found the treasure! You Win!\n")
-                    else:
-                              print("You enter a room of beasts. Game Over.\n")
+#Eazy Level - Order not randomised:
+#e.g. 4 letter, 2 symbol, 2 number = JduE&!91
+password_l = random.sample(letters, nr_letters)
+password_n = random.sample(numbers, nr_numbers)
+password_s = random.sample(symbols, nr_symbols)
+password = password_l + password_n + password_s
 
-          else:
-                    print("You get attacked by an angry trout. Game Over.\n")
-else:
-          print("You fell into a hole. Game Over.\n")
+#Alternatively one kan use for loops to build passwordparts
+'''for _ in range(1, nr_letters+1):
+  password_l += (random.choice(letters))
+for _ in range(1, nr_numbers+1):
+  password_n += (random.choice(numbers))
+for _ in range(1, nr_symbols+1):
+  password_s += (random.choice(symbols))
+password = password_l + password_n + password_s
+'''
+
+  
+
+random.shuffle(password)
+print(''.join(password))
+#Hard Level - Order of characters randomised:
+#e.g. 4 letter, 2 symbol, 2 number = g^2jk8&P
