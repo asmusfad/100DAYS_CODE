@@ -23,7 +23,7 @@ for letter in chosen_word:
 while not end_of_game:
   guessed_letter = input("Guess a letter: ").lower()
   #clear()
-  
+
   if guessed_letter in display:
     print(f"You've already guessed {guessed_letter}")
     cont = input("Do you want to continue? (y/n) ")
@@ -31,14 +31,14 @@ while not end_of_game:
       end_of_game = True
     else:
       continue
-      
+
   for i in range(word_length):
     if chosen_word[i] == guessed_letter:
       display[i] = guessed_letter
-  
-  
+
+
   #print(f"You have {lives} lives left.")
-  
+
   if guessed_letter not in display:
     print(f"You guessed {guessed_letter} that is not in the word, you lose a life")
     lives -= 1
@@ -46,13 +46,13 @@ while not end_of_game:
        end_of_game = True
        print("You lose!")
   print(f"{' '.join(display)}")
-    
-    
+
+
   if "_" not in display:
     end_of_game = True
     print("You win!")
-    
-  
-  
+
+
+
 
   print(stages[lives])
